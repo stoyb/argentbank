@@ -1,0 +1,25 @@
+.headerContainer {
+    background-color:#FFF;
+}
+.navContainer {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding: 5px 20px;
+
+}
+.logo {
+    width: 200px;
+    max-width: 100%;
+}
+.signInContainer{
+    font-weight: bold;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.signInContainer:hover {
+    text-decoration: underline;
+}
