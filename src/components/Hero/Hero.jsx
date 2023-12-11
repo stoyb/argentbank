@@ -6,6 +6,7 @@ const Hero = () => {
     <>
     <section className={styles.heroContainer}>
     <div className={styles.heroContent}>
+    <h2 className={styles.deleteItem}>Promoted Content</h2>
         <p className={styles.subtitle}>No fees.</p>
         <p className={styles.subtitle}>No minimum deposit.</p> 
         <p className={styles.subtitle}>High interest rates.</p>

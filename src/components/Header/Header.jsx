@@ -11,6 +11,7 @@ const Header = () => {
         <nav className={styles.navContainer}>
             <Link to="/">
                 <img src={logo} alt="Argent Bank" className={styles.logo}/>
+                <h1 className={styles.deleteItem}>Argent Bank</h1>
             </Link>
             <Link to="/" className={styles.signInContainer}>
                 <SignIn/>
