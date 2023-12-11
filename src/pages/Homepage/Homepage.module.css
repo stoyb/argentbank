@@ -13,3 +13,8 @@
     width: 1px;
     white-space: nowrap; 
 }
+@media (min-width:920px) {
+    .homePageContent{
+        flex-direction: row;
+    }
+}
