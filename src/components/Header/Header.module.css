@@ -7,18 +7,19 @@
     justify-content:space-between;
     align-items:center;
     padding: 5px 20px;
-
 }
 .logo {
     width: 200px;
     max-width: 100%;
 }
 .signInContainer{
-    font-weight: bold;
     color: #2c3e50;
+    font-weight: bold;
     display: flex;
     align-items: center;
     text-decoration: none;
+    column-gap: 8px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 .signInContainer:hover {
     text-decoration: underline;

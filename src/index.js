@@ -4,24 +4,25 @@ import './index.css';
 import App from './pages/App/App.jsx';
 import Error404 from './pages/Error404/Error404.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Homepage from './pages/Homepage/Homepage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <Error404 />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <App />,
-    //     errorElement: <Error404 />
-    //   }, 
-    //   {
-    //     path: 'accomodation/:id',
-    //     element: <App />,
-    //     errorElement: <Error404 />
-    //   }
-    // ]
+    children: [
+      {
+        index: true,
+        element: <Homepage />,
+        errorElement: <Error404 />
+      }, 
+      {
+        path: 'accomodation/:id',
+        element: <App />,
+        errorElement: <Error404 />
+      }
+    ]
   },
 ]);
 
