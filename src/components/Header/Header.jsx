@@ -13,7 +13,7 @@ const Header = () => {
                 <img src={logo} alt="Argent Bank" className={styles.logo}/>
                 <h1 className={styles.deleteItem}>Argent Bank</h1>
             </Link>
-            <Link to="/" className={styles.signInContainer}>
+            <Link to="/login" className={styles.signInContainer}>
                 <SignIn/>
             </Link>
         </nav>

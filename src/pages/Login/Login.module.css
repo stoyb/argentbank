@@ -1,0 +1,60 @@
+.loginMain{
+    background-color: #12002b;
+    display: flex;
+    margin:0;
+    min-height: 82vh;
+    text-align: center;
+}
+.loginSection{
+    flex: 1;
+}
+.loginContainer{
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    width: 300px;
+    margin:0 auto;
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+}
+.loginImg{
+    text-align: center;
+    font-size: 5rem;
+    
+}
+.loginTitle{
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.inputRemember{
+    display: flex;
+}
+.inputWrapperInput{
+    padding: 5px;
+    font-size: 1.2rem;
+}
+.inputWrapperLabel{
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.inputRememberLabel{
+    margin-left:0.25rem;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+.buttonSignIn{
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+}
