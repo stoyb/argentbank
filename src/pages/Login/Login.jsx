@@ -1,11 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/circle-user-solid.svg'
+import Header from '../../components/Header/Header'
 import styles from './Login.module.css'
+import NavItem from '../../components/NavItem/NavItem'
 
 const Login = () => {
   return (
     <>
+    <Header>
+      <Link to="/login" className={styles.signInContainer}>
+        <NavItem logo={logo} paragraph="Sign In"/>
+      </Link>
+    </Header>
     <main className={styles.loginMain}>
     <section className={styles.loginSection}>
         <div className={styles.loginContainer}>
@@ -24,7 +31,7 @@ const Login = () => {
                 <input type="checkbox" id="remenber-me"/>
                 <label className={styles.inputRememberLabel} for="remember-me">Remember me</label>
             </div>
-            <Link to="#" className={styles.buttonSignIn}>Sign In</Link>
+            <Link to="/user" className={styles.buttonSignIn}>Sign In</Link>
         </form>
         </div>
     </section>

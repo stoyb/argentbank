@@ -5,12 +5,19 @@ import styles from './Homepage.module.css'
 import logoChat from '../../assets/icon-chat.png'
 import logoMoney from '../../assets/icon-money.png'
 import logoSecurity from '../../assets/icon-security.png'
-
-
+import Header from '../../components/Header/Header'
+import { Link } from 'react-router-dom'
+import NavItem from '../../components/NavItem/NavItem'
+import logoSignIn from "../../assets/circle-user-solid.svg"
 
 const Homepage = () => {
   return (
     <>
+    <Header>
+      <Link to="/login" className={styles.signInContainer}>
+        <NavItem logo={logoSignIn} paragraph="Sign In"/>
+      </Link>
+    </Header>
     <Hero/>
     <section className={styles.homePageContent}>
       <h2 className={styles.deleteItem}>Features</h2>

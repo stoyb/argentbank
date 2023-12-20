@@ -1,12 +1,11 @@
 import React from 'react'
-import logo from '../../assets/circle-user-solid.svg'
 //import styles from './SignIn.module.css'
 
-const SignIn = () => {
+const SignIn = ({logo, paragraph}) => {
   return (
     <>
     <img src={logo} alt="SignIn"/> 
-    Sign In
+    {paragraph}
     </>
   )
 }

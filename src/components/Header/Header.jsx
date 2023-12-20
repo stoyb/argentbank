@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/argentBankLogo.png'
-import SignIn from '../SignIn/SignIn'
 import styles from './Header.module.css'
 
-const Header = () => {
+const Header = ({children}) => {
   return (
     <>
     <header className={styles.headerContainer}>
@@ -13,9 +12,7 @@ const Header = () => {
                 <img src={logo} alt="Argent Bank" className={styles.logo}/>
                 <h1 className={styles.deleteItem}>Argent Bank</h1>
             </Link>
-            <Link to="/login" className={styles.signInContainer}>
-                <SignIn/>
-            </Link>
+            {children}
         </nav>
     </header>
     </>

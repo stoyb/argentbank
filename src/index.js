@@ -6,6 +6,8 @@ import Error404 from './pages/Error404/Error404.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Homepage from './pages/Homepage/Homepage';
 import Login from './pages/Login/Login'
+import User from './pages/User/User';
+
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+        errorElement: <Error404 />
+      }, 
+      {
+        path: 'user',
+        element: <User />,
         errorElement: <Error404 />
       }
     ]
