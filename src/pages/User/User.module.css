@@ -26,11 +26,11 @@
     flex-direction:column;
 }
 .header{
-    margin-bottom: 2rem;
+    margin-bottom:2rem;
 }
 .title{
     padding:0.67em 0;
-    font-size: 2rem;
+    font-size:2rem;
 }
 .editButton{
   border-color:#00bc77;

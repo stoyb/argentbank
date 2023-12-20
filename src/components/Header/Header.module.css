@@ -1,36 +1,36 @@
+.navContainer, .signInContainer {
+    display:flex;
+    align-items:center;
+}
 .headerContainer {
     background-color:#FFF;
 }
 .navContainer {
-    display:flex;
     flex-direction:row;
     justify-content:space-between;
-    align-items:center;
-    padding: 5px 20px;
+    padding:5px 20px;
 }
 .deleteItem{
-  border: 0;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap; 
+  border:0;
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  width:1px;
+  white-space:nowrap; 
 }
 .logo {
-    width: 200px;
-    max-width: 100%;
+    width:200px;
+    max-width:100%;
 }
 .signInContainer{
-    color: #2c3e50;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    column-gap: 8px;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color:#2c3e50;
+    font-weight:bold;
+    text-decoration:none;
+    column-gap:8px;
+    font-family:Avenir, Helvetica, Arial, sans-serif;
 }
 .signInContainer:hover {
-    text-decoration: underline;
+    text-decoration:underline;
 }

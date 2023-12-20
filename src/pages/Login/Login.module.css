@@ -1,65 +1,63 @@
-.loginTitle, .inputWrapperLabel, .inputRememberLabel, .buttonSignIn{
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+.loginTitle, .inputWrapperLabel, .inputRememberLabel, .buttonSignIn, .signInContainer{
+    font-family:Avenir, Helvetica, Arial, sans-serif;
 }
 .loginMain, .loginContainer, .loginImg{
-    text-align: center;
+    text-align:center;
 }
-.loginMain, .inputWrapper, .inputRemember {
-    display: flex;
+.loginMain, .inputWrapper, .inputRemember, .signInContainer {
+    display:flex;
 }
 .inputWrapperLabel, .buttonSignIn{
-    font-weight: bold;
+    font-weight:bold;
 }
 .loginMain{
-    background-color: #12002b;
+    background-color:#12002b;
     margin:0;
-    min-height: 82vh;
+    min-height:82vh;
 }
 .loginSection{
-    flex: 1;
+    flex:1;
 }
 .loginContainer{
-    box-sizing: border-box;
-    background-color: #FFFFFF;
-    width: 300px;
+    box-sizing:border-box;
+    background-color:#FFFFFF;
+    width:300px;
     margin:0 auto;
-    margin-top: 3rem;
-    padding: 2rem;
+    margin-top:3rem;
+    padding:2rem;
 }
 .loginImg{
-    font-size: 5rem;
+    font-size:5rem;
 }
 .inputWrapper{
-    flex-direction: column;
-    text-align: left;
-    margin-bottom: 1rem;
+    flex-direction:column;
+    text-align:left;
+    margin-bottom:1rem;
 }
 .inputWrapperInput{
-    padding: 5px;
-    font-size: 1.2rem;
+    padding:5px;
+    font-size:1.2rem;
 }
 .inputRememberLabel{
     margin-left:0.25rem;
 }
 .buttonSignIn{
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
+    display:block;
+    width:100%;
+    padding:8px;
+    font-size:1.1rem;
+    margin-top:1rem;
+    border-color:#00bc77;
+    background-color:#00bc77;
+    color:#fff;
 }
 .signInContainer{
-    color: #2c3e50;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    column-gap: 8px;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color:#2c3e50;
+    font-weight:bold;
+    align-items:center;
+    text-decoration:none;
+    column-gap:8px;
 }
 .signInContainer:hover {
-    text-decoration: underline;
+    text-decoration:underline;
 }

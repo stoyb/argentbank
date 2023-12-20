@@ -1,7 +1,9 @@
+.signInContainer, .homePageContent {
+    display: flex;
+}
 .signInContainer{
     color: #2c3e50;
     font-weight: bold;
-    display: flex;
     align-items: center;
     text-decoration: none;
     column-gap: 8px;
@@ -11,7 +13,6 @@
     text-decoration: underline;
 }
 .homePageContent{
-    display: flex;
     flex-direction: column;
     text-align: center;
 }
