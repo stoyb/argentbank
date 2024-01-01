@@ -1,25 +1,12 @@
 import React from 'react'
 import Account from '../../components/Account/Account'
-import Header from '../../components/Header/Header'
-import styles from './User.module.css'
-import { Link } from 'react-router-dom'
-import NavItem from '../../components/NavItem/NavItem'
-import logoUser from '../../assets/circle-user-solid.svg'
-import logoRight from '../../assets/right-from-bracket-solid.svg'
+import { fetchProfile } from '../../services/getProfile'
+import styles from './Profile.module.css'
 
 const User = () => {
+  console.log(fetchProfile());
   return (
     <>
-      <Header>
-        <div className={styles.mainNav}>
-          <Link to="/login" className={styles.mainNavItem}>
-            <NavItem logo={logoUser} paragraph=" Tony"/>
-          </Link>
-          <Link to="/" className={styles.mainNavItem}>
-            <NavItem logo={logoRight} paragraph=" Sign Out"/>
-          </Link>
-        </div>
-      </Header>
       <main className={styles.userMain}>
         <div className={styles.userContainer}>
         <div className={styles.header}>

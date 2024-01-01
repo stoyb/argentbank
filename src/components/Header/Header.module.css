@@ -34,3 +34,6 @@
 .signInContainer:hover {
     text-decoration:underline;
 }
+.mainNav, .mainNavItem {
+    text-align:center;
+}
