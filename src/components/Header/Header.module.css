@@ -39,4 +39,8 @@
 }
 .mainNavItem{
     font-family:Avenir, Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    text-decoration:none;
+    color:#2c3e50;
+    margin-right:0.5rem;
 }

@@ -3,7 +3,7 @@ import Account from '../../components/Account/Account'
 import { fetchProfile } from '../../services/getProfile'
 import styles from './Profile.module.css'
 
-const User = () => {
+const Profile = () => {
   console.log(fetchProfile());
   return (
     <>
@@ -22,4 +22,4 @@ const User = () => {
   )
 }
 
-export default User
+export default Profile

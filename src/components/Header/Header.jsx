@@ -8,6 +8,9 @@ import logoSignIn from "../../assets/circle-user-solid.svg"
 import { fetchProfile } from '../../services/getProfile'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { setName } from '../../reducers/AddNameReducer'
+
+
 
 const Header = () => {
   const [firstName, setFirstName] = useState('');
@@ -20,9 +23,9 @@ const Header = () => {
       .catch(error => {
         console.error(error);
   })}, []);
-  if(firstName) {
-    dispatch(setFirstName(firstName))
-  }
+  
+    dispatch(setName(firstName))
+
   return (
     <>
     <header className={styles.headerContainer}>

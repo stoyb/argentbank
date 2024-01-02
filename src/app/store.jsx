@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import logginReducer from '../reducers/LogginReducer';
-import UpdateReducer from '../reducers/UpdateReducer';
+import AddNameReducer from '../reducers/AddNameReducer';
+import LogginReducer from '../reducers/LogginReducer';
+//import UpdateReducer from '../reducers/UpdateReducer';
 
 const store = configureStore({
   reducer: {
-    auth: logginReducer,
-    update: UpdateReducer,
+    auth: LogginReducer,
+    firstName: AddNameReducer
+    // update: UpdateReducer,
   },
 });
 export default store;
