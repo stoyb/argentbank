@@ -7,8 +7,6 @@ import { setToken } from '../../reducers/LogginReducer'
 import axios from 'axios'
 
 
-
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +18,7 @@ const Login = () => {
     async function fetchData() {
       const response = await axios.post('http://localhost:3001/api/v1/user/login', {
         username: username,
-        password: password,
+        password: password
       });
       setData(response)
     }

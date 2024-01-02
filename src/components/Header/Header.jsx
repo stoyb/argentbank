@@ -7,24 +7,23 @@ import logoRight from '../../assets/right-from-bracket-solid.svg'
 import logoSignIn from "../../assets/circle-user-solid.svg"
 import { fetchProfile } from '../../services/getProfile'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setName } from '../../reducers/AddNameReducer'
-
-
 
 const Header = () => {
   const [firstName, setFirstName] = useState('');
-  const dispatch = useDispatch()
-  useEffect(() => {
-    fetchProfile()
-     .then (res => {
-       setFirstName(res.firstName)
-     })
-      .catch(error => {
-        console.error(error);
-  })}, []);
-  
-    dispatch(setName(firstName))
+  //const dispatch = useDispatch()
+  // useEffect(() => {
+  //   fetchProfile()
+  //    .then (res => {
+  //      setFirstName(res.firstName)
+  //    })
+  //     .catch(error => {
+  //       console.error(error);
+  // })}, []);
+    //dispatch(setName(firstName))
+const state = useSelector(state => state)
+console.log(state.update.firstName);
 
   return (
     <>
@@ -38,11 +37,11 @@ const Header = () => {
             <div className={styles.mainNav}>
           <Link to="/profile" className={styles.mainNavItem}>
           <img src={logoUser} alt={firstName}/>
-              {firstName}
+              <span> {firstName}</span>
           </Link>
           <Link to="/" className={styles.mainNavItem}>
             <img src={logoRight} alt="Sign Out"/>
-              Sign Out
+            <span> Sign Out</span>
           </Link>
         </div>
             ) : (
