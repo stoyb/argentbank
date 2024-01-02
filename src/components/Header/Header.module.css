@@ -37,3 +37,6 @@
 .mainNav, .mainNavItem {
     text-align:center;
 }
+.mainNavItem{
+    font-family:Avenir, Helvetica, Arial, sans-serif;
+}

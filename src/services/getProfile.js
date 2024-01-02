@@ -7,12 +7,12 @@ export const fetchProfile = async () => {
             const response = await axios.post('http://localhost:3001/api/v1/user/profile');
             return response.data
         } else {
-            const profile = {
+            const profile = [{
                 firstName: 'Tony',
                 lastName: 'Stark',
                 email: 'tony@stark.com',
                 password: 'password123'
-              }
+              }]
             return profile
         }
     } catch(error) {

@@ -7,19 +7,22 @@ import logoRight from '../../assets/right-from-bracket-solid.svg'
 import logoSignIn from "../../assets/circle-user-solid.svg"
 import { fetchProfile } from '../../services/getProfile'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const Header = () => {
   const [firstName, setFirstName] = useState('');
+  const dispatch = useDispatch()
   useEffect(() => {
     fetchProfile()
      .then (res => {
        setFirstName(res.firstName)
-      
      })
       .catch(error => {
         console.error(error);
   })}, []);
-  console.log(firstName);
+  if(firstName) {
+    dispatch(setFirstName(firstName))
+  }
   return (
     <>
     <header className={styles.headerContainer}>

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setToken } from '../../reducers/LogginReducer'
 import axios from 'axios'
-import { fetchProfile } from '../../services/getProfile'
+
 
 
 
@@ -31,7 +31,7 @@ const Login = () => {
       setError(true)
     }
   }
-  console.log(fetchProfile('Tony', 'sdes'));
+  
   useEffect(() => {
    // GetToken.login 
   }, []); 
