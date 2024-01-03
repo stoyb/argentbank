@@ -1,25 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/argentBankLogo.png'
 import styles from './Header.module.css'
 import logoUser from '../../assets/circle-user-solid.svg'
 import logoRight from '../../assets/right-from-bracket-solid.svg'
 import logoSignIn from "../../assets/circle-user-solid.svg"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { editFirstName } from '../../reducers/UpdateReducer'
 
 const Header = () => {
-  //const dispatch = useDispatch()
-  // useEffect(() => {
-  //   fetchProfile()
-  //    .then (res => {
-  //      setFirstName(res.firstName)
-  //    })
-  //     .catch(error => {
-  //       console.error(error);
-  // })}, []);
-    //dispatch(setName(firstName))
-const firstName = useSelector(state => state.update.firstName)
-console.log(firstName);
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [firstName, setFirstName] = useState('')
+  const state = useSelector(state => state.update.firstName)
+
+  useEffect(() => {
+    setFirstName(state)
+  }, [state]);
+
+  function logOut() {
+    navigate('/')
+    dispatch(editFirstName(null))
+  }
 
   return (
     <>
@@ -33,17 +36,17 @@ console.log(firstName);
             <div className={styles.mainNav}>
           <Link to="/profile" className={styles.mainNavItem}>
           <img src={logoUser} alt={firstName}/>
-              <span> {firstName}</span>
+              <span>{firstName}</span>
           </Link>
-          <Link to="/" className={styles.mainNavItem}>
+          <button onClick={logOut} className={styles.mainNavItem}>
             <img src={logoRight} alt="Sign Out"/>
             <span> Sign Out</span>
-          </Link>
+          </button>
         </div>
             ) : (
             <Link to="/login" className={styles.signInContainer}>
               <img src={logoSignIn} alt="Sign In"/>
-              Sign In
+               Sign In
             </Link>
             )}
         </nav>
