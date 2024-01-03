@@ -8,12 +8,10 @@ const updateSlice = createSlice({
   },
   reducers: {
     editFirstName: (state, action) => {
-      const firstName = action.payload;
-      state.firstName = firstName;
+      state.firstName = action.payload;
     },
     editLastName: (state, action) => {
-      const lastName = action.payload;
-      state.lastName = lastName;
+      state.lastName = action.payload;
     }
   },
 });

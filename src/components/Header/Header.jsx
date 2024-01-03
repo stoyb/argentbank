@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/argentBankLogo.png'
 import styles from './Header.module.css'
 import logoUser from '../../assets/circle-user-solid.svg'
 import logoRight from '../../assets/right-from-bracket-solid.svg'
 import logoSignIn from "../../assets/circle-user-solid.svg"
-import { fetchProfile } from '../../services/getProfile'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setName } from '../../reducers/AddNameReducer'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
-  const [firstName, setFirstName] = useState('');
   //const dispatch = useDispatch()
   // useEffect(() => {
   //   fetchProfile()
@@ -22,8 +18,8 @@ const Header = () => {
   //       console.error(error);
   // })}, []);
     //dispatch(setName(firstName))
-const state = useSelector(state => state)
-console.log(state.update.firstName);
+const firstName = useSelector(state => state.update.firstName)
+console.log(firstName);
 
   return (
     <>
