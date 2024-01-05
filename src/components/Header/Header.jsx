@@ -6,7 +6,9 @@ import logoUser from '../../assets/circle-user-solid.svg'
 import logoRight from '../../assets/right-from-bracket-solid.svg'
 import logoSignIn from "../../assets/circle-user-solid.svg"
 import { useSelector, useDispatch } from 'react-redux'
-import { editFirstName } from '../../reducers/UpdateReducer'
+import { editFirstName, editLastName } from '../../reducers/UpdateReducer'
+import { setToken } from '../../reducers/LogginReducer'
+
 
 const Header = () => {
 
@@ -14,14 +16,16 @@ const Header = () => {
   const navigate = useNavigate()
   const [firstName, setFirstName] = useState('')
   const state = useSelector(state => state.update.firstName)
-
+  console.log(state);
   useEffect(() => {
     setFirstName(state)
   }, [state]);
 
   function logOut() {
     navigate('/')
-    dispatch(editFirstName(null))
+    dispatch(editFirstName(""))
+    dispatch(editLastName(""))
+    dispatch(setToken(""))
   }
 
   return (

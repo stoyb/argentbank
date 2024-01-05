@@ -1,38 +1,45 @@
 import React from 'react'
 import logo from '../../assets/circle-user-solid.svg'
 import styles from './Login.module.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setToken } from '../../reducers/LogginReducer'
-import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const [data, setData]  = useState("");
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   function handleSubmit(event) {
     event.preventDefault()
     async function fetchData() {
-      const response = await axios.post('http://localhost:3001/api/v1/user/login', {
-        username: username,
-        password: password
+      try {
+        const response = await fetch("http://localhost:3001/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: username, password: password })
       });
-      setData(response)
+      const result = await response.json()
+      console.log(result)
+     
+        if(response.status === 200) {
+        dispatch(setToken(response.body.token))
+        navigate('/profile')
+        } else {
+          setError(true)
+        }
+      } catch(error) {
+        console.error(error);
+      }
     }
     fetchData()
-    if(data) {
-      dispatch(setToken(data))
-    } else {
-      setError(true)
-    }
   }
-  
-  useEffect(() => {
-   // GetToken.login 
-  }, []); 
+
   return (
     <>
     <main className={styles.loginMain}>

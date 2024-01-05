@@ -1,38 +1,52 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Account from '../../components/Account/Account'
 import styles from './Profile.module.css'
-//import axios from 'axios'
 import { editFirstName, editLastName } from '../../reducers/UpdateReducer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const Profile = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const userFirstName = useSelector(state => state.update.firstName);
+  const userLastName = useSelector(state => state.update.lastName);
+  const [firstName, setFirstName] = useState(userFirstName);
+  const [lastName, setLastName] = useState(userLastName);
   const [form, setForm] = useState(null);
   const dispatch = useDispatch()
+  const token = useSelector(state => state.auth.token)
+  //console.log(token);
 
+  //console.log(firstName, lastName);
+  useEffect(()=> {
+    setFirstName(userFirstName);
+    setLastName(userLastName);
+  }, [userFirstName, userLastName]);
   function handleSubmit(event) {
     event.preventDefault()
-    // async function fetchData() {
-    //   const response = await axios.put('http://localhost:3001/api/v1/user/profile', {
-    //     firstName: firstName,
-    //     lastName: lastName
+    // async function fetchUserData(){
+    //   const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+    //       method: "PUT",
+    //       headers: {
+    //        "Authorization" : "Bearer " + token
+    //       },
+    //       body: JSON.stringify({ "firstName": firstName, "lastName": lastName})
     //   });
-    //   setData(response)
+    //   const result = await response.json();
+    //   console.log(result)
+    //     .then((response)=> {
+    //       console.log(response);
+    //       dispatch(editFirstName(response.body.firstName))
+    //       dispatch(editLastName(response.body.lastName))
+    //     });
     // }
-    //  fetchData()
-     dispatch(editFirstName(firstName))
-     dispatch(editLastName(lastName))
-    // if(data) {
-    //   dispatch(setToken(data))
-    // } else {
-    //   setError(true)
-    // }
+    //fetchUserData()
+    
+    dispatch(editFirstName(firstName))
+    dispatch(editLastName(lastName))
     console.log(firstName, lastName);
     setForm(null)
   }
+
   return (
     <>
       <main className={styles.userMain}>
@@ -43,11 +57,13 @@ const Profile = () => {
            {!form && <button onClick={setForm} className={styles.editButton}>Edit name</button>}
            {form &&
           <form>
-            <div>
+            
+              <div>
               <input value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
               <input value={lastName} onChange={(e) => setLastName(e.target.value)}/>
               !
             </div>
+            
             <button onClick={handleSubmit} className={styles.editButton}>Save</button>
           </form>
            }
