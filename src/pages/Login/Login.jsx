@@ -11,13 +11,41 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const handleChangeCheckbox = () =>  {
+    setRememberMe(!rememberMe)
+  }  
+  
+  if(rememberMe){
+    console.log( "Remembering done" + rememberMe);
+    localStorage.setItem('usernameItem', username);
+    localStorage.setItem('passwordItem', password);
+    const rememberedUsername = localStorage.getItem('usernameItem')
+    const rememberedPassword = localStorage.getItem('passwordItem')
+    console.log("Username : " + rememberedUsername + " Password : " + rememberedPassword)
+    
+  }
+//   useEffect(()=> {
+     
+//       if(rememberedUsername && rememberedPassword){
+//         setUsername(rememberedUsername)
+//         setPassword(rememberedPassword)
+//         setRememberMe(true)
+//       }
+//     }
+// , [rememberMe, username, password])
+  
+
+  
+
   function handleSubmit(event) {
     event.preventDefault()
+
     async function fetchData() {
-      try {
-        const response = await fetch("http://localhost:3001/api/v1/user/login", {
+      const response = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,19 +53,25 @@ const Login = () => {
         body: JSON.stringify({ email: username, password: password })
       });
       const result = await response.json()
-      console.log(result)
      
         if(response.status === 200) {
-        dispatch(setToken(response.body.token))
+        dispatch(setToken(result.body.token))
         navigate('/profile')
+        // if(rememberMe) {
+        //   localStorage.setItem('usernameItem', username);
+        //   localStorage.setItem('passwordItem', password);
+        //   setUsername('');
+        //   setPassword('');
+        // }
         } else {
           setError(true)
+          // setUsername('');
+          // setPassword('');
         }
-      } catch(error) {
-        console.error(error);
-      }
     }
     fetchData()
+    
+    
   }
 
   return (
@@ -57,7 +91,7 @@ const Login = () => {
                 <input className={styles.inputWrapperInput} type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <div className={styles.inputRemember}>
-                <input type="checkbox" id="remenber-me"/>
+                <input type="checkbox" checked={rememberMe} onChange={handleChangeCheckbox} id="remenber-me"/>
                 <label className={styles.inputRememberLabel} htmlFor="remember-me">Remember me</label>
             </div>
             {error && <span>Le nom de l'utilisateur ou le mot de passe est incorrect</span>}

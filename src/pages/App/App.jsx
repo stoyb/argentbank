@@ -22,10 +22,8 @@ function App() {
             "Authorization" : "Bearer " + token
           }
         });
-
         const result = await response.json();
         console.log(result);
-
         dispatch(editFirstName(result.body.firstName));
         dispatch(editLastName(result.body.lastName));
       } catch (error) {
@@ -36,7 +34,7 @@ function App() {
     if (token) {
       fetchToken();
     }
-  }, [token]);
+  }, [dispatch, token]);
 
   return (
     <>
