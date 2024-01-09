@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../assets/circle-user-solid.svg'
 import styles from './Login.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setToken } from '../../reducers/LogginReducer'
 import { useNavigate } from 'react-router-dom'
@@ -20,23 +20,23 @@ const Login = () => {
   }  
   
   if(rememberMe){
-    console.log( "Remembering done" + rememberMe);
+    console.log( "Remembering done");
     localStorage.setItem('usernameItem', username);
     localStorage.setItem('passwordItem', password);
-    const rememberedUsername = localStorage.getItem('usernameItem')
-    const rememberedPassword = localStorage.getItem('passwordItem')
-    console.log("Username : " + rememberedUsername + " Password : " + rememberedPassword)
-    
   }
-//   useEffect(()=> {
+
+  const rememberedUsername = localStorage.getItem('usernameItem')
+  const rememberedPassword = localStorage.getItem('passwordItem')
+
+  useEffect(()=> {
      
-//       if(rememberedUsername && rememberedPassword){
-//         setUsername(rememberedUsername)
-//         setPassword(rememberedPassword)
-//         setRememberMe(true)
-//       }
-//     }
-// , [rememberMe, username, password])
+      if(rememberedUsername && rememberedPassword){
+        setUsername(rememberedUsername)
+        setPassword(rememberedPassword)
+        setRememberMe(true)
+      }
+    }
+, [rememberedUsername, rememberedPassword])
   
 
   
@@ -55,18 +55,12 @@ const Login = () => {
       const result = await response.json()
      
         if(response.status === 200) {
-        dispatch(setToken(result.body.token))
-        navigate('/profile')
-        // if(rememberMe) {
-        //   localStorage.setItem('usernameItem', username);
-        //   localStorage.setItem('passwordItem', password);
-        //   setUsername('');
-        //   setPassword('');
-        // }
+          dispatch(setToken(result.body.token))
+          navigate('/profile')
         } else {
           setError(true)
-          // setUsername('');
-          // setPassword('');
+          setUsername('');
+          setPassword('');
         }
     }
     fetchData()
