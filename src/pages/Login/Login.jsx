@@ -3,8 +3,8 @@ import logo from '../../assets/circle-user-solid.svg'
 import styles from './Login.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setToken } from '../../reducers/LogginReducer'
 import { useNavigate } from 'react-router-dom'
+import  fetchLoginData  from '../../services/fetchLoginData'
 
 
 const Login = () => {
@@ -24,48 +24,22 @@ const Login = () => {
     localStorage.setItem('usernameItem', username);
     localStorage.setItem('passwordItem', password);
   }
-
+  
   const rememberedUsername = localStorage.getItem('usernameItem')
   const rememberedPassword = localStorage.getItem('passwordItem')
 
   useEffect(()=> {
-     
-      if(rememberedUsername && rememberedPassword){
-        setUsername(rememberedUsername)
-        setPassword(rememberedPassword)
-        setRememberMe(true)
-      }
+    if(rememberedUsername && rememberedPassword) {
+      setUsername(rememberedUsername)
+      setPassword(rememberedPassword)
+      setRememberMe(true)
     }
-, [rememberedUsername, rememberedPassword])
+  }
+  , [rememberedUsername, rememberedPassword])
   
-
-  
-
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault()
-
-    async function fetchData() {
-      const response = await fetch("http://localhost:3001/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: username, password: password })
-      });
-      const result = await response.json()
-     
-        if(response.status === 200) {
-          dispatch(setToken(result.body.token))
-          navigate('/profile')
-        } else {
-          setError(true)
-          setUsername('');
-          setPassword('');
-        }
-    }
-    fetchData()
-    Rem
-    
+    fetchLoginData(username, password, setError, setUsername, setPassword, dispatch, navigate)
   }
 
   return (

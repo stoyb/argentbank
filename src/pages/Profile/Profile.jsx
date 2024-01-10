@@ -4,6 +4,7 @@ import Account from '../../components/Account/Account'
 import styles from './Profile.module.css'
 import { editFirstName, editLastName } from '../../reducers/UpdateReducer'
 import { useDispatch, useSelector } from 'react-redux'
+import changeProfileData from '../../services/fetchProfileData'
 
 
 const Profile = () => {
@@ -14,32 +15,17 @@ const Profile = () => {
   const [form, setForm] = useState(null);
   const dispatch = useDispatch()
   const token = useSelector(state => state.auth.token)
-  //console.log(token);
 
-  //console.log(firstName, lastName);
   useEffect(()=> {
     setFirstName(userFirstName);
     setLastName(userLastName);
   }, [userFirstName, userLastName]);
-   function handleSubmit(event) {
-     event.preventDefault()
-    async function fetchUserData(){
-      const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-          method: "PUT",
-          headers: {
-           "Authorization" : "Bearer " + token,
-           "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ firstName: firstName, lastName: lastName})
-      });
-      const result = await response.json();
-      console.log(result)
-    }
-    fetchUserData()
-    
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    changeProfileData(token, firstName, lastName)
     dispatch(editFirstName(firstName))
     dispatch(editLastName(lastName))
-    console.log(firstName, lastName);
     setForm(null)
   }
 
