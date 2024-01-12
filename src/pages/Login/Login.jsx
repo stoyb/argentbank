@@ -20,10 +20,10 @@ const Login = () => {
   }  
   
   if(rememberMe){
-    console.log( "Remembering done");
     localStorage.setItem('usernameItem', username);
     localStorage.setItem('passwordItem', password);
-  }
+    console.log( "Remembering done " + username + password);
+  } 
   
   const rememberedUsername = localStorage.getItem('usernameItem')
   const rememberedPassword = localStorage.getItem('passwordItem')
@@ -33,13 +33,21 @@ const Login = () => {
       setUsername(rememberedUsername)
       setPassword(rememberedPassword)
       setRememberMe(true)
-    }
+    } 
   }
   , [rememberedUsername, rememberedPassword])
   
+  // if(!rememberMe && rememberedUsername && rememberedPassword){
+  //   console.log( "Remembering delete");
+ 
+  // }
   const handleSubmit = (event) => {
     event.preventDefault()
     fetchLoginData(username, password, setError, setUsername, setPassword, dispatch, navigate)
+    if(!rememberMe) {
+      localStorage.removeItem('usernameItem');
+      localStorage.removeItem('passwordItem');
+    }
   }
 
   return (

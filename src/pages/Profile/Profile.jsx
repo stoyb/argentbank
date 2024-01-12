@@ -4,7 +4,8 @@ import Account from '../../components/Account/Account'
 import styles from './Profile.module.css'
 import { editFirstName, editLastName } from '../../reducers/UpdateReducer'
 import { useDispatch, useSelector } from 'react-redux'
-import changeProfileData from '../../services/fetchProfileData'
+import changeProfileData from '../../services/changeProfileData'
+import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
@@ -13,13 +14,17 @@ const Profile = () => {
   const [firstName, setFirstName] = useState(userFirstName);
   const [lastName, setLastName] = useState(userLastName);
   const [form, setForm] = useState(null);
-  const dispatch = useDispatch()
-  const token = useSelector(state => state.auth.token)
-
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+  const navigate = useNavigate();
+  
   useEffect(()=> {
+    if(token == null){
+      navigate('/login')
+    }
     setFirstName(userFirstName);
     setLastName(userLastName);
-  }, [userFirstName, userLastName]);
+  }, [token, navigate, userFirstName, userLastName]);
 
   function handleSubmit(event) {
     event.preventDefault()
