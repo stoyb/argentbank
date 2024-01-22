@@ -11,23 +11,22 @@ import { setToken } from '../../reducers/LogginReducer'
 
 
 const Header = () => {
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [firstName, setFirstName] = useState('')
   const state = useSelector(state => state.update.firstName)
-  console.log(state);
+
+  // Sets firstName from Redux store 
   useEffect(() => {
     setFirstName(state)
   }, [state]);
-
+  // Logs out from Profile page to Homepage
   function logOut() {
     navigate('/')
     dispatch(editFirstName(""))
     dispatch(editLastName(""))
     dispatch(setToken(""))
   }
-
   return (
     <>
     <header className={styles.headerContainer}>

@@ -1,3 +1,4 @@
+// Fetches user data with token 
 export default async function fetchProfileData(token) {
   try {
     const response = await fetch("http://localhost:3001/api/v1/user/profile", {
@@ -7,8 +8,6 @@ export default async function fetchProfileData(token) {
       }
     });
     const result = await response.json();
-    console.log(result);
-     
     return result
   } catch (error) {
     console.error(error);

@@ -10,8 +10,6 @@ import Profile from './pages/Profile/Profile';
 import store from './app/store';
 import { Provider } from 'react-redux';
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",

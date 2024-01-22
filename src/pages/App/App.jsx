@@ -6,23 +6,15 @@ import Header from "../../components/Header/Header";
 import { editFirstName, editLastName } from "../../reducers/UpdateReducer";
 import fetchProfileData from "../../services/fetchProfileData"
 
-
-
-
 function App() {
   const dispatch = useDispatch();
-  const state = useSelector(state => state)
-  console.log(state);
   const token = useSelector(state => state.auth.token)
-  
-  console.log(token);
-  //Only when the token changes
+  // Only when the token changes
   useEffect(() => {
-    
-
     if (token) {
+    // Fetches user firstname and lastname and sends data to the store 
      async function fetchData() {
-       const data = await fetchProfileData(token);
+       const data = await fetchProfileData(token); // Fetches user data with token 
        dispatch(editFirstName(data.body.firstName));
        dispatch(editLastName(data.body.lastName));
      }

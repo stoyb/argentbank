@@ -1,5 +1,5 @@
 import { setToken } from '../reducers/LogginReducer'
-
+// Fetches token with username and password
 export default async function FetchLoginData(username, userpassword, setError, setUsername, setPassword, dispatch, navigate ) {
     try {
         const response = await fetch("http://localhost:3001/api/v1/user/login", {

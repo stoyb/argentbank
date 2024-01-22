@@ -17,7 +17,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
   const navigate = useNavigate();
-  
+  // Sets firstname and lastname from the store
   useEffect(()=> {
     if(token == null){
       navigate('/login')
@@ -25,10 +25,10 @@ const Profile = () => {
     setFirstName(userFirstName);
     setLastName(userLastName);
   }, [token, navigate, userFirstName, userLastName]);
-
+  // On submit, changes firstname and lastname values with inputs values and sends new values on the store
   function handleSubmit(event) {
     event.preventDefault()
-    changeProfileData(token, firstName, lastName)
+    changeProfileData(token, firstName, lastName) // Changes data with token and inputs values 
     dispatch(editFirstName(firstName))
     dispatch(editLastName(lastName))
     setForm(null)

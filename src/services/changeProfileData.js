@@ -1,7 +1,5 @@
+// Changes data with token and inputs values 
 export default async function changeProfileData(token, first, last) {
-  console.log(token);
-  console.log(first);
-  console.log(last);
   try {
     const response = await fetch("http://localhost:3001/api/v1/user/profile", {
        method: "PUT",
@@ -14,7 +12,7 @@ export default async function changeProfileData(token, first, last) {
     const result = await response.json();
     console.log(result)
 
-  } catch(error){
+  } catch(error) {
     console.error(error);
   }
  }

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Account.module.css'
 
+// Account container in Profile page
 const Account = ({title, amount, description}) => {
   return (
     <>

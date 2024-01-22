@@ -15,19 +15,18 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // Changes checkbox state
   const handleChangeCheckbox = () =>  {
     setRememberMe(!rememberMe)
   }  
-  
+  // When checkbox is true inputs value are on the local Storage 
   if(rememberMe){
     localStorage.setItem('usernameItem', username);
     localStorage.setItem('passwordItem', password);
-    console.log( "Remembering done " + username + password);
   } 
-  
   const rememberedUsername = localStorage.getItem('usernameItem')
   const rememberedPassword = localStorage.getItem('passwordItem')
-
+  // Keeps local Storage values inside inputs 
   useEffect(()=> {
     if(rememberedUsername && rememberedPassword) {
       setUsername(rememberedUsername)
@@ -36,20 +35,15 @@ const Login = () => {
     } 
   }
   , [rememberedUsername, rememberedPassword])
-  
-  // if(!rememberMe && rememberedUsername && rememberedPassword){
-  //   console.log( "Remembering delete");
- 
-  // }
+  // On submit, fetches a token with username and password values 
   const handleSubmit = (event) => {
     event.preventDefault()
-    fetchLoginData(username, password, setError, setUsername, setPassword, dispatch, navigate)
+    fetchLoginData(username, password, setError, setUsername, setPassword, dispatch, navigate) // Fetches token 
     if(!rememberMe) {
       localStorage.removeItem('usernameItem');
       localStorage.removeItem('passwordItem');
     }
   }
-
   return (
     <>
     <main className={styles.loginMain}>
