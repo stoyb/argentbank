@@ -33,25 +33,30 @@ const Profile = () => {
     dispatch(editLastName(lastName))
     setForm(null)
   }
-
+  function handleCancel(event) {
+    event.preventDefault()
+    setFirstName(userFirstName);
+    setLastName(userLastName);
+    setForm(null)
+  }
   return (
     <>
       <main className={styles.userMain}>
         <div className={styles.userContainer}>
         <div className={styles.header}>
           <h2 className={styles.title}>Welcome back<br/>
-           {firstName} {lastName}</h2>
+           {firstName} {lastName} !</h2>
            {!form && <button onClick={setForm} className={styles.editButton}>Edit name</button>}
            {form &&
           <form>
-            
-              <div>
-              <input value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-              <input value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-              !
+            <div className={styles.inputsProfileContainer}>
+                <input value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                <input value={lastName} onChange={(e) => setLastName(e.target.value)}/>
             </div>
-            
-            <button onClick={handleSubmit} className={styles.editButton}>Save</button>
+            <div className={styles.buttonsProfileContainer}>
+              <button onClick={handleSubmit} className={styles.editButton}>Save</button>
+              <button onClick={handleCancel} className={styles.cancelButton}>Cancel</button>
+            </div>
           </form>
            }
         </div>
